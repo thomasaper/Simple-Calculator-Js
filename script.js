@@ -54,10 +54,13 @@ operationsEl.forEach( operation => {
         // new function for clearing display number 2 and moving the number to display number 1 and show the
         // result in the temporary result
         clearVar(operationName);
+        // lastOperations and operationNmae have the same name
+        lastOperation = operationName;
         console.log(result)
     })
 });
 
+// clearing functionality
 // defaut operationName set to empty string
 function clearVar(name = ''){
     // update display 1 with display number 2 and operation name (math history)
@@ -69,4 +72,23 @@ function clearVar(name = ''){
     dis2Num = '';
     // show temporary result
     tempResultEl.innerText = result;
-}
+};
+
+// math functionality
+function mathOperation() {
+    if(lastOperation === 'X') {
+        // convert strings to number 
+        // multiply temporary result with display number 2
+        result = parseFloat(result) * parseFloat(dis2Num);
+    } else if (lastOperation === '-') {
+        result = parseFloat(result) - parseFloat(dis2Num);
+    } else if (lastOperation === '+') {
+        result = parseFloat(result) + parseFloat(dis2Num);
+    } else if (lastOperation === '/') {
+        result = parseFloat(result) / parseFloat(dis2Num);
+    } else if (lastOperation === '%') {
+        result = parseFloat(result) % parseFloat(dis2Num);
+    }
+};
+
+)

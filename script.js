@@ -56,7 +56,6 @@ operationsEl.forEach( operation => {
         clearVar(operationName);
         // lastOperations and operationNmae have the same name
         lastOperation = operationName;
-        console.log(result)
     })
 });
 
@@ -128,3 +127,70 @@ clearLastEl.addEventListener('click', () => {
     display2El.innerText = '';
     dis2Num = '';
 });
+
+// functionality for using the calculator with the keyboard
+// if we have any keydown in the browser window we want to do something
+window.addEventListener('keydown', (e) => {
+    // check which key was pressed down
+    // if any number or the dot is pressed
+    if(
+        e.key === '0' ||
+        e.key === '1' ||
+        e.key === '2' ||
+        e.key === '3' ||
+        e.key === '4' ||
+        e.key === '5' ||
+        e.key === '6' ||
+        e.key === '7' ||
+        e.key === '8' ||
+        e.key === '9' ||
+        e.key === '.' 
+    ) {
+        // new function for clicking the corresponding number key in the calculator 
+        // the pressed key is passed as argument 
+        clickButtonEl(e.key);
+    }
+    // if any operation key is pressed
+    else if (
+        e.key === '/' ||
+        e.key === '+' ||
+        e.key === '-' ||
+        e.key === '%' 
+    ) {
+        // new function for clicking the corresponding operation key in the calculator 
+        // the pressed key is passed as argument 
+        clickOperation(e.key);
+    // if multiply is pressed we change the operation sign because key and button are not the same    
+    } else if ( e.key === '*') {
+        clickOperation('X')
+    // if the equal or enter key is pressed    
+    } else if (e.key === '=' || e.key == 'Enter') {
+        // new function for clicking the equal button
+        clickEqual();
+    }
+});
+
+function clickButtonEl(key) {
+    // we loop through the number elements to search the corresponding button
+    numbersEl.forEach( button => {
+        // if the button number and the key number are the same click the button
+        if(button.innerText === key) {
+            button.click();
+        }
+    })
+}
+
+function clickOperation(key) {
+    // we loop through the operation elements to search the corresponding button
+    operationsEl.forEach (button => {
+        // if the button operation and the the key operation are the same click the button
+        if(button.innerText === key) {
+            button.click();
+        }
+    })
+}
+
+// click the equal button
+function clickEqual() {
+  equalEl.click();
+}

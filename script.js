@@ -5,7 +5,7 @@ const tempResultEl = document.querySelector('.temp-result');
 const numbersEl = document.querySelectorAll('.number');
 const operationsEl = document.querySelectorAll('.operation');
 const equalEl = document.querySelector('.equal');
-const clearEl = document.querySelector('.all-clear');
+const clearAllEl = document.querySelector('.all-clear');
 const clearLastEl = document.querySelector('.last-entity-clear');
 
 // variable elements
@@ -92,7 +92,7 @@ function mathOperation() {
 };
 
 // the equal operation
-equalEl.addEventListener('click', (e) => {
+equalEl.addEventListener('click', () => {
     // if we do not have both numbers for the operation return
     if(!dis1Num || !dis2Num ) return;
     // setting haveDot to false so that a new number can have a dot again
@@ -109,4 +109,15 @@ equalEl.addEventListener('click', (e) => {
     dis2Num = result;
     // clear display number 1 (math history)
     dis1Num = '';
+});
+
+// the clear all operation
+// displays are 0 but the real numbers are empty
+clearAllEl.addEventListener('click', (e) => {
+    display1El.innerText = '0';
+    display2El.innerText= '0';
+    dis1Num = '';
+    dis2Num = '';
+    result = '';
+    tempResultEl.innerText = '0';
 })

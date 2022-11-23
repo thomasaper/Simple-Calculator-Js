@@ -91,4 +91,22 @@ function mathOperation() {
     }
 };
 
-)
+// the equal operation
+equalEl.addEventListener('click', (e) => {
+    // if we do not have both numbers for the operation return
+    if(!dis1Num || !dis2Num ) return;
+    // setting haveDot to false so that a new number can have a dot again
+    haveDot = false;
+    // completing the math operation
+    mathOperation();
+    // clearing the variables and updating the display
+    clearVar();
+    // show temporary result in display 2
+    display2El.innerText = result;
+    // clear temporary result
+    tempResultEl.innerText = '';
+    // move result to display number 2
+    dis2Num = result;
+    // clear display number 1 (math history)
+    dis1Num = '';
+})

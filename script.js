@@ -113,11 +113,18 @@ equalEl.addEventListener('click', () => {
 
 // the clear all operation
 // displays are 0 but the real numbers are empty
-clearAllEl.addEventListener('click', (e) => {
+clearAllEl.addEventListener('click', () => {
     display1El.innerText = '0';
     display2El.innerText= '0';
     dis1Num = '';
     dis2Num = '';
     result = '';
     tempResultEl.innerText = '0';
-})
+});
+
+// the clear last entity operation
+// clear display number 2 and the display Element 2
+clearLastEl.addEventListener('click', () => {
+    display2El.innerText = '';
+    dis2Num = '';
+});
